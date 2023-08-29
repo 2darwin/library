@@ -1,6 +1,13 @@
+#book-container {
+  display: flex;
+  flex-direction: row;
+}
 .book-card {
     border: 1px solid #ccc;
     padding: 10px;
     margin: 10px;
     width: 300px;
   }
+#bookForm {
+  display: none;
+}
