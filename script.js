@@ -16,12 +16,12 @@ function addBookToLibrary(title, author, pages, isRead, year) {
 
 
 // Manually add some books to the library for demonstration
-addBookToLibrary("The Catcher in the Rye", "J.D. Salinger", "234", "yes", "1951");
-addBookToLibrary("To Kill a Mockingbird", "Harper Lee", "281", "no", "1960");
-addBookToLibrary("1984", "George Orwell", "328", "yes", "1949");
-addBookToLibrary("The Hobbit", "J.R.R. Tolkien", "295", "no", "1937");
-addBookToLibrary("A Game of Thrones", "George R.R. Martin", "694", "no", "1996");
-addBookToLibrary("The Maze Runner", "James Dashner", "375", "yes", "2009");
+addBookToLibrary("1 The Catcher in the Rye", "J.D. Salinger", "234", "yes", "1951");
+addBookToLibrary("2 To Kill a Mockingbird", "Harper Lee", "281", "no", "1960");
+addBookToLibrary("3 1984", "George Orwell", "328", "yes", "1949");
+addBookToLibrary("4 The Hobbit", "J.R.R. Tolkien", "295", "no", "1937");
+addBookToLibrary("5 A Game of Thrones", "George R.R. Martin", "694", "no", "1996");
+addBookToLibrary("6 The Maze Runner", "James Dashner", "375", "yes", "2009");
 
 function displayBooks() {
   let bookContainer = document.getElementById("book-container");
@@ -39,8 +39,23 @@ function displayBooks() {
     <p>Read: ${book.isRead}</p>
     <p>Year: ${book.year}</p>
     `;
+
+    //Create a button to remove a book
+    let removeButton = document.createElement("button");
+    removeButton.textContent = "Remove";
+    removeButton.className = "remove-button";
+    removeButton.addEventListener("click", () => removeBook(i)); //Call removeBook function with index i
+
+    bookCard.appendChild(removeButton);
     bookContainer.appendChild(bookCard);
   }
+}
+
+function removeBook(index) {
+  //Remove the book from the library array
+  myLibrary.splice(index, 1);
+  console.log("Removed", index)
+  displayBooks();
 }
 
 // Call the displayBooks function to show the books on the page
