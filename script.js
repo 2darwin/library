@@ -56,9 +56,25 @@ function displayBooks() {
     removeButton.className = "remove-button";
     removeButton.addEventListener("click", () => removeBook(i)); //Call removeBook function with index i
 
+    //Create a button to toggle read status
+    let toggleReadButton = document.createElement("button");
+    toggleReadButton.textContent = book.isRead === "yes" ? "Mark as Unread" : "Mark as Read";
+    toggleReadButton.addEventListener("click", () => toggleReadStatus(i)); // Call toggleReadStatus function with index i
+
+    bookCard.appendChild(toggleReadButton);
     bookCard.appendChild(removeButton);
     bookContainer.appendChild(bookCard);
   }
+}
+
+//Function to toggle the read status of a book
+function toggleReadStatus(index) {
+  if (myLibrary[index].isRead === "yes") {
+    myLibrary[index].isRead = "no";
+  } else {
+    myLibrary[index].isRead = "yes";
+  }
+  displayBooks();
 }
 
 //Remove the book from the library array
